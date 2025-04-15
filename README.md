@@ -1,9 +1,12 @@
 # NinjaOne QA Engineer Assessment Project
 
-Repository to NinjaOne Test.
+Repository to NinjaOne Test Automation Assessment.
+
 - The test was made using Cypress and the principles of Page Object Model.
 - The Eslint was used to ensure the code quality.
 - The project have a pipeline in Github Actions to run the tests and a report is generated.
+- The file cypress.env.json is not included in the repository, it is used to store the environment variables and secrets, so it is necessary to create it and add the correct values.
+
 
 ## Prerequisites
 
@@ -33,12 +36,13 @@ npx cypress open
 npx cypress run
 ```
 
-## Test Suites
-
-The test suites are available in the `cypress/integration` directory.
-
 ## Test Cases
 
-The test cases are available in the `cypress/integration` directory.
+The test cases are available in the `cypress/e2e/features` directory.
 
+## Not implemented Tests Cases
 
+- The tests for login with two-factor authentication have not been implemented yet due to technical limitations.
+- To enable these tests, we have a few possible approaches:
+    - Bypass the two-factor authentication in the QA environment to simplify test execution.
+    - Use a tool like Mailosaur to generate temporary email addresses and phone numbers, allowing us to intercept the two-factor authentication code via Mailosaur's API.
