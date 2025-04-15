@@ -2,10 +2,15 @@
 
 Repository to NinjaOne Test Automation Assessment.
 
-- The test was made using Cypress and the principles of Page Object Model.
-- The Eslint was used to ensure the code quality.
-- The project have a pipeline in Github Actions to run the tests and a report is generated.
-- The file cypress.env.json is not included in the repository, it is used to store the environment variables and secrets, so it is necessary to create it and add the correct values.
+- This project implements automated testing for the main pages of the NinjaOne application, including the login, forgot password, account creation, and activation email pages.
+
+- Tests are written using Cypress, following the Page Object Model (POM) design pattern.
+
+- ESLint is used to maintain code quality and consistency.
+
+- A GitHub Actions pipeline is configured to automatically run the tests and generate a test report.
+
+- The `cypress.env.json` file is not included in the repository, as it contains environment variables and secrets. You must create this file locally and populate it with the appropriate values before running the tests.
 
 
 ## Prerequisites
