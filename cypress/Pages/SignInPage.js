@@ -13,8 +13,8 @@ export class SignInPage {
     }
   
     signIn(email, password, staySignedIn = true) {
-      cy.get("#email").type(email,{ delay: 100 });
-      cy.get("#password").type(password,{ delay: 100 });
+      cy.get("#email").type(email,{ delay: 150 });
+      cy.get("#password").type(password,{ delay: 150 });
       if (staySignedIn) {
         cy.get('.css-j5jbvc').click();
       }
@@ -28,8 +28,8 @@ export class SignInPage {
     }
   
     typeEmailPassword(email, password) {
-      cy.get("#email").type(email);
-      cy.get("#password").type(password);
+      cy.get("#email").type(email,{ delay: 150 });
+      cy.get("#password").type(password,{ delay: 150 });
     }
 
     getErrorText(errorText) {
