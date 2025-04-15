@@ -10,6 +10,19 @@ export class RequestActivationPage {
         .should('be.visible')
         .click();
         cy.get('h2.css-1hie37q.eo7gr5w0').should('be.visible');
-      }
+    }
+
+    sendActivationEmail(email) {
+        cy.get('.form-control').type(email);
+        cy.get('.m-t-sm').click();
+    }
+
+    getSuccessMessage(successMessage) {
+        cy.get('.css-bk160n').should('be.visible').and('contain.text', successMessage);
+    }
+
+    getErrorMessage(errorMessage) {
+        cy.get('.css-1cfrmkq').should('be.visible').and('contain.text', errorMessage);
+    }
 }
 

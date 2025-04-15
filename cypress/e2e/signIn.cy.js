@@ -24,7 +24,7 @@ viewports.forEach((viewport) => {
       cy.contains('h2', 'Multi-Factor Authentication').should('be.visible');
     });
 
-    it.only("should not sign in with blank space username and password", () => {
+    it("should not sign in with blank space username and password", () => {
       signInPage.clearFields();
       signInPage.signInButton();
       signInPage.getErrorBanner('Error during login');
