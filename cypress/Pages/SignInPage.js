@@ -7,14 +7,18 @@ export class SignInPage {
             }
         });
     }
+
+    signInButton() {
+        cy.contains("button", "Sign in").click();
+    }
   
     signIn(email, password, staySignedIn = true) {
-      cy.get("#email").type(email);
-      cy.get("#password").type(password);
+      cy.get("#email").type(email,{ delay: 100 });
+      cy.get("#password").type(password,{ delay: 100 });
       if (staySignedIn) {
         cy.get('.css-j5jbvc').click();
       }
-      cy.contains("button", "Sign in").click();
+      this.signInButton();
     }
   
     clearFields() {
@@ -28,8 +32,14 @@ export class SignInPage {
       cy.get("#password").type(password);
     }
 
-    getErrorText() {
-        cy.get('.alert-danger').should('be.visible').and('have.text', 'Invalid username/password. Please contact your system administrator for assistance.');
+    getErrorText(errorText) {
+        cy.get('.alert-danger').should('be.visible').and('have.text', errorText);
+    }
+
+    getErrorBanner(errorText) {
+      cy.get('.css-1cfrmkq.eu2udwo9')
+      .should('be.visible')
+      .and('contain.text', errorText);
     }
   }
   

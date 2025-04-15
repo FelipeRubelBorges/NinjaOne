@@ -67,7 +67,7 @@ viewports.forEach((viewport) => {
             registerPage.getErrorText('Passwords do not match');
         })
 
-        it('should fail to create an account with the phone number is not valid (10 digits)', () => {
+        it('should fail to create an account with the phone number is not valid', () => {
             registerPage.registerFields(
                 faker.company.name(), 
                 faker.person.firstName(), 
@@ -79,7 +79,10 @@ viewports.forEach((viewport) => {
                 'English (United States)');
             registerPage.getErrorText('Invalid phone number');
         })
-        
-        
+
+        it('should fail to create an account without the mandatory fields', () => {
+            registerPage.registerButton();
+            registerPage.getErrorText('RequiredRequiredRequiredInvalid email addressPassword must be between (8) and (72) characters and meet 3 of the following criteria: lower case letter, upper case letter, special character, number.Invalid phone number');
+        });
     });
 });

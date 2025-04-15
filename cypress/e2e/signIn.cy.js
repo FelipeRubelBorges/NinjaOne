@@ -24,9 +24,20 @@ viewports.forEach((viewport) => {
       cy.contains('h2', 'Multi-Factor Authentication').should('be.visible');
     });
 
-    it.only("should not sign in with invalid password", () => {
+    it.only("should not sign in with blank space username and password", () => {
+      signInPage.clearFields();
+      signInPage.signInButton();
+      signInPage.getErrorBanner('Error during login');
+    });
+
+    it("should not sign in with invalid password", () => {
       signInPage.signIn(Cypress.env("username"), "invalidPassword");
-      signInPage.getErrorText();
+      signInPage.getErrorText('Invalid username/password. Please contact your system administrator for assistance.');
+    });
+
+    it("should not sign in with invalid username", () => {
+      signInPage.signIn("invalidUsername", Cypress.env("password"));
+      signInPage.getErrorText('Invalid username/password. Please contact your system administrator for assistance.');
     });
   });
 });

@@ -23,15 +23,26 @@ export class RegisterPage {
       cy.get('.css-1hwfws3').contains(language).click();
     }
 
-    submitRegister(successText) {
+    registerButton() {
       cy.get('button[type="submit"].btn.btn-primary.m-t-sm').click();
+    }
+
+    submitRegister(successText) {
+      this.registerButton();
       cy.get('p.css-bk160n').should('be.visible').and('have.text', successText);
 
     }
 
     getErrorText(errorText) {
-      cy.get('button[type="submit"].btn.btn-primary.m-t-sm').click();
+      this.registerButton();
       cy.get('.invalid').should('be.visible').and('have.text', errorText);
+    }
+
+    getErrorTexts(errorTexts) {
+      this.registerButton();
+      errorTexts.forEach(errorText => {
+        cy.get('.invalid').should('be.visible').and('have.text', errorText);
+      });
     }
 }
   
