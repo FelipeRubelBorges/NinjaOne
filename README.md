@@ -1,9 +1,9 @@
 # NinjaOne QA Engineer Assessment Project
 
 Repository to NinjaOne Test.
-The test was made using Cypress and the principles of Page Object Model.
-The Eslint was used to ensure the code quality.
-The project have a pipeline in Github Actions to run the tests and a report is generated.
+- The test was made using Cypress and the principles of Page Object Model.
+- The Eslint was used to ensure the code quality.
+- The project have a pipeline in Github Actions to run the tests and a report is generated.
 
 ## Prerequisites
 
