@@ -6,6 +6,8 @@ Repository to NinjaOne Test Automation Assessment.
 
 - Tests are written using Cypress, following the Page Object Model (POM) design pattern.
 
+- Automated tests are configured with Cypress viewports to simulate different devices and screen resolutions, ensuring responsive behavior across platforms.
+
 - ESLint is used to maintain code quality and consistency.
 
 - A GitHub Actions pipeline is configured to automatically run the tests and generate a test report.
