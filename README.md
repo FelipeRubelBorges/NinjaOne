@@ -12,6 +12,8 @@ Repository to NinjaOne Test Automation Assessment.
 
 - A GitHub Actions pipeline is configured to automatically run the tests and generate a test report.
 
+- A report is generated in the Artifacts section of the GitHub Actions pipeline or in the Upload HTML Report Artifact step.
+
 - The `cypress.env.json` file is not included in the repository, as it contains environment variables and secrets. You must create this file locally and populate it with the appropriate values before running the tests.
 
 
