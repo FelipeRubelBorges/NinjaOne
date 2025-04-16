@@ -8,6 +8,10 @@ Repository to NinjaOne Test Automation Assessment.
 
 - Automated tests are configured with Cypress viewports to simulate different devices and screen resolutions, ensuring responsive behavior across platforms.
 
+- The tests are written in Gherkin language and are compatible with the Cypress Cucumber Preprocessor.
+
+- The faker library is used to generate random data for the tests to improve the data diversity.
+
 - ESLint is used to maintain code quality and consistency.
 
 - A GitHub Actions pipeline is configured to automatically run the tests and generate a test report.
