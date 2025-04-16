@@ -17,25 +17,25 @@ viewports.forEach((viewport) => {
 
         it('should successfully create an account', () => {
             registerPage.registerFields(
-            faker.company.name(), 
-            faker.person.firstName(), 
-            faker.person.lastName(), 
-            faker.internet.email(), 
-            password, 
-            password, 
-            '527708-5526',
-            'English (United States)');
+                faker.company.name(),
+                faker.person.firstName(),
+                faker.person.lastName(),
+                faker.internet.email(),
+                password,
+                password,
+                '527708-5526',
+                'English (United States)');
             registerPage.submitRegister('Account successfully created. Please check your email to activate your account.');
         });
 
         it('should fail to create an account with invalid email', () => {
             registerPage.registerFields(
-                faker.company.name(), 
-                faker.person.firstName(), 
-                faker.person.lastName(), 
+                faker.company.name(),
+                faker.person.firstName(),
+                faker.person.lastName(),
                 'invalid-email@gmailcom',
-                password, 
-                password, 
+                password,
+                password,
                 '527708-5526',
                 'English (United States)');
             registerPage.getErrorText('Invalid email address');
@@ -43,10 +43,10 @@ viewports.forEach((viewport) => {
 
         it('should fail to create an account with invalid password', () => {
             registerPage.registerFields(
-                faker.company.name(), 
-                faker.person.firstName(), 
-                faker.person.lastName(), 
-                faker.internet.email(), 
+                faker.company.name(),
+                faker.person.firstName(),
+                faker.person.lastName(),
+                faker.internet.email(),
                 '123456',
                 '123456',
                 '527708-5526',
@@ -56,12 +56,12 @@ viewports.forEach((viewport) => {
 
         it('should fail to create an account with the password does not match', () => {
             registerPage.registerFields(
-                faker.company.name(), 
-                faker.person.firstName(), 
-                faker.person.lastName(), 
-                faker.internet.email(), 
-                password, 
-                'invalid-password', 
+                faker.company.name(),
+                faker.person.firstName(),
+                faker.person.lastName(),
+                faker.internet.email(),
+                password,
+                'invalid-password',
                 '527708-5526',
                 'English (United States)');
             registerPage.getErrorText('Passwords do not match');
@@ -69,12 +69,12 @@ viewports.forEach((viewport) => {
 
         it('should fail to create an account with the phone number is not valid', () => {
             registerPage.registerFields(
-                faker.company.name(), 
-                faker.person.firstName(), 
-                faker.person.lastName(), 
-                faker.internet.email(), 
-                password, 
-                password, 
+                faker.company.name(),
+                faker.person.firstName(),
+                faker.person.lastName(),
+                faker.internet.email(),
+                password,
+                password,
                 '1234567890',
                 'English (United States)');
             registerPage.getErrorText('Invalid phone number');
