@@ -13,13 +13,17 @@ viewports.forEach((viewport) => {
     });
 
     it("should sign in successfully with staySignedIn", () => {
-      signInPage.signIn(Cypress.env("username"), Cypress.env("password"));
+      cy.env(["username","password"], { log: false }).then(({ username, password }) => {
+        signInPage.signIn(username, password);
+      });
       cy.url().should('include', '/auth/?state=');
       cy.contains('h2', 'Multi-Factor Authentication').should('be.visible');
     });
 
     it("should sign in successfully without staySignedIn", () => {
-      signInPage.signIn(Cypress.env("username"), Cypress.env("password"), false);
+      cy.env(["username","password"], { log: false }).then(({ username, password }) => {
+        signInPage.signIn(username, password, false);
+      });
       cy.url().should('include', '/auth/?state=');
       cy.contains('h2', 'Multi-Factor Authentication').should('be.visible');
     });
@@ -31,13 +35,17 @@ viewports.forEach((viewport) => {
     });
 
     it("should not sign in with invalid password", () => {
-      signInPage.signIn(Cypress.env("username"), "invalidPassword");
+      cy.env(["username"], { log: false }).then(({ username }) => {
+        signInPage.signIn(username, "invalidPassword");
+      });
       signInPage.getErrorText('Invalid username/password. Please contact your system administrator for assistance.');
     });
 
     //The test is desabled because is flaky and the error message is not consistent (Human Verification is required)
     /*it("should not sign in with invalid username", () => {
-      signInPage.signIn("Praxtka@ninjaone.com.br", Cypress.env("password"));
+      cy.env(["password"], { log: false }).then(({ password }) => {
+        signInPage.signIn("Praxtka@ninjaone.com.br", password);
+      });
       signInPage.getErrorText('Invalid username/password. Please contact your system administrator for assistance.');
     });*/
   });

@@ -18,7 +18,9 @@ viewports.forEach((viewport) => {
         });
 
         it('should not send activation email with already activated email', () => {
-            requestActivationPage.sendActivationEmail(Cypress.env("username"));
+            cy.env(["username"], { log: false }).then(({ username }) => {
+              requestActivationPage.sendActivationEmail(username);
+            });
             requestActivationPage.getSuccessMessage('The specified email already has an activated account.');
         });
 
