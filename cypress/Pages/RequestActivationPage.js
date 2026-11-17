@@ -2,8 +2,8 @@ export class RequestActivationPage {
     requestActivationLink() {
         cy.visit('https://app.ninjarmm.com/auth/#/register', {
           onBeforeLoad(win) {
-            Object.defineProperty(win.navigator, 'language', { value: Cypress.env("LANG") });
-            Object.defineProperty(win.navigator, 'languages', { value: [Cypress.env("LANG")] });
+            Object.defineProperty(win.navigator, 'language', { value: Cypress.expose("LANG") });
+            Object.defineProperty(win.navigator, 'languages', { value: [Cypress.expose("LANG")] });
           }
       });
         cy.get('a[href="#/requestActivation"]')

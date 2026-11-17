@@ -17,7 +17,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 30000,
   requestTimeout: 30000,
   responseTimeout: 30000,
-  env: {
+  expose: {
     LANG: "en-US",
   },
 });

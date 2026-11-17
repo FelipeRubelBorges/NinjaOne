@@ -6,21 +6,26 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Cypress Tests with Report
         run: npm run test:report
@@ -29,7 +34,7 @@ jobs:
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
 
       - name: Upload HTML Report Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: cypress-html-report
           path: cypress/reports/html

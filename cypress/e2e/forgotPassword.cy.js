@@ -14,13 +14,17 @@ viewports.forEach((viewport) => {
 
     it('should send reset password by email', () => {
       forgotPasswordPage.selectIdentity('Email');
-      forgotPasswordPage.sendResetPasswordByEmail(Cypress.env("username"));
+      cy.env(["username"], { log: false }).then(({ username }) => {
+        forgotPasswordPage.sendResetPasswordByEmail(username);
+      });
       forgotPasswordPage.getSuccessMessage('Password recovery email sent');
     });
 
     it('should send reset password by text', () => {
       forgotPasswordPage.selectIdentity('Text');
-      forgotPasswordPage.sendResetPasswordByText(Cypress.env("username"), '7179');
+      cy.env(["username"], { log: false }).then(({ username }) => {
+        forgotPasswordPage.sendResetPasswordByText(username, '7179');
+      });
       forgotPasswordPage.enterSecurityCode();
     });
 
@@ -32,7 +36,9 @@ viewports.forEach((viewport) => {
 
     it('should not send reset password by text with invalid phone number', () => {
       forgotPasswordPage.selectIdentity('Text');
-      forgotPasswordPage.sendResetPasswordByText(Cypress.env("username"), '6871');
+      cy.env(["username"], { log: false }).then(({ username }) => {
+        forgotPasswordPage.sendResetPasswordByText(username, '6871');
+      });
       forgotPasswordPage.getErrorMessage('Error during password reset');
     });
 
